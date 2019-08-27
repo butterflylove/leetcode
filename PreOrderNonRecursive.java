@@ -7,7 +7,7 @@ public class PreOrderNonRecursive {
         TreeNode y = new TreeNode(2, null, null);
         TreeNode z = new TreeNode(3, x, y);
         TreeNode w = new TreeNode(4, z, null);
-        inOrderNonRecursive(w);
+        postOrderNonRecursive(w);
     }
 
     public static void preOrderNonRecursive(TreeNode root) {
@@ -41,6 +41,30 @@ public class PreOrderNonRecursive {
             } else {
                 cur = stack.pop();
                 System.out.println(cur.getVal());
+                cur = cur.getRight();
+            }
+        }
+    }
+
+    public static void postOrderNonRecursive(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        TreeNode lastVisit = cur;
+        while (!stack.isEmpty() || cur != null) {
+            // 一直向左遍历
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.getLeft();
+            }
+            // 获取栈顶元素
+            cur = stack.peek();
+            // 若cur 的right 为空 或者 等于lastVsit，则输出当前节点
+            if (cur.getRight() == null || cur.getRight() == lastVisit) {
+                System.out.println(cur.getVal());
+                stack.pop();
+                lastVisit = cur;
+                cur = null;
+            } else {
                 cur = cur.getRight();
             }
         }
