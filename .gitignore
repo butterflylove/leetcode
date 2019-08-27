@@ -1,0 +1,33 @@
+.gradle
+idl-spec.yaml
+out/
+/build/
+*.log
+idl-spec.yaml
+!gradle/wrapper/gradle-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+### rpc ###
+src/main/java/com/xiaohongshu/fls/rpc/
+src/main/java/idl-spec.yaml
