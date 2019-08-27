@@ -7,7 +7,7 @@ public class PreOrderNonRecursive {
         TreeNode y = new TreeNode(2, null, null);
         TreeNode z = new TreeNode(3, x, y);
         TreeNode w = new TreeNode(4, z, null);
-        preOrderNonRecursive(w);
+        inOrderNonRecursive(w);
     }
 
     public static void preOrderNonRecursive(TreeNode root) {
@@ -24,6 +24,24 @@ public class PreOrderNonRecursive {
             }
             if (cur.getLeft() != null) {
                 stack.push(cur.getLeft());
+            }
+        }
+    }
+
+    public static void inOrderNonRecursive(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        while (!stack.isEmpty() || cur != null) {
+            if (cur != null) {
+                stack.push(cur);
+                cur = cur.getLeft();
+            } else {
+                cur = stack.pop();
+                System.out.println(cur.getVal());
+                cur = cur.getRight();
             }
         }
     }
